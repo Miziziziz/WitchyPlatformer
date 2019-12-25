@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://TextDisplayBecauseGodotTextScalingSucks.tres" type="Material" id=1]
+[ext_resource path="res://PixelFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://TextDisplay.gd" type="Script" id=3]
+
+[node name="TextDisplay" type="Label"]
+material = ExtResource( 1 )
+margin_left = -162.0
+margin_top = -72.0
+margin_right = -66.0
+margin_bottom = -3.0
+custom_fonts/font = ExtResource( 2 )
+text = "AD - Move 
+Space - Jump 
+Esc - Exit
+"
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.03
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/link.wav-4f08fcf4851f5c3b575e679ac49ad831.sample"
+
+[deps]
+
+source_file="res://audio/sfx/space/link.wav"
+dest_files=[ "res://.import/link.wav-4f08fcf4851f5c3b575e679ac49ad831.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

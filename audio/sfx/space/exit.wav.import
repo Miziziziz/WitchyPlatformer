@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/exit.wav-7e1dad14a7c34493c9bd52fac0430703.sample"
+
+[deps]
+
+source_file="res://audio/sfx/space/exit.wav"
+dest_files=[ "res://.import/exit.wav-7e1dad14a7c34493c9bd52fac0430703.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

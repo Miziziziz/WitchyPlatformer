@@ -1,0 +1,167 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://spritesheets/Witchcraft_spr_2.png" type="Texture" id=2]
+[ext_resource path="res://audio/sfx/you_win.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/sfx/wall.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/sfx/space/step.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=5]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "jump"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 8 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("FlightSoundPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StepSoundPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.15455
+height = 5.21438
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 104.75
+initial_velocity_random = 0.47
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+move_speed = 60
+jump_force = 300
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.085, -8 )
+texture = ExtResource( 2 )
+hframes = 21
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/fall = SubResource( 5 )
+anims/idle = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -6.78862 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.3, 0.3 )
+
+[node name="JumpParticles" type="Particles2D" parent="."]
+position = Vector2( 5.62699, -8.52576 )
+emitting = false
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="WinParticles" type="Particles2D" parent="."]
+position = Vector2( 0, -9.23774 )
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="WinSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="FlightSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="StepSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.049

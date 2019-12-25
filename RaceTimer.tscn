@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://RaceTimer.gd" type="Script" id=1]
+[ext_resource path="res://TextDisplayBecauseGodotTextScalingSucks.tres" type="Material" id=2]
+[ext_resource path="res://PixelFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://audio/sfx/space/exit.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/sfx/witch_cackle-1.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/sfx/anchor_action.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/sfx/link.wav" type="AudioStream" id=7]
+
+[node name="RaceTimer" type="CanvasLayer" groups=[
+"need_player_ref",
+]]
+scale = Vector2( 3.333, 3.333 )
+transform = Transform2D( 3.333, 0, 0, 3.333, 0, 0 )
+script = ExtResource( 1 )
+max_time = 30
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+material = ExtResource( 2 )
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+text = "asd"
+
+[node name="LoseSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="StartSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="WinSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="RestartSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

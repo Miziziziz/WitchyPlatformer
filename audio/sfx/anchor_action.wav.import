@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/anchor_action.wav-8d2a8a61119c2b42d75ff608e685b5ee.sample"
+
+[deps]
+
+source_file="res://audio/sfx/anchor_action.wav"
+dest_files=[ "res://.import/anchor_action.wav-8d2a8a61119c2b42d75ff608e685b5ee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
